@@ -1,0 +1,141 @@
+#### intro
+----------------------------------------------------------------
+eliminate manually compile tsc js filename
+$ npm init
+$ npm i --save-dev lite-server // hot-reload
+
+## Basic and type
+
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+
+  types: 
+  - number 1,4.5
+  - string 'Hi' "Hi" `HI`
+  - boolean
+  - object
+  - Array
+  - Tuple
+  - *Enum : Human readable identifiers
+  -   : avoid the type warning(not recommended)
+  - Union : number | string
+  - Literal
+  - Alias/ custom types
+  - void : ignore any return,
+  - function type and callbacks
+  - unknown
+  - never
+  
+-- typescript understand the default datatype of a variable
+ so no need to mention any type unless a value is explicitly assigned.
+ // or TypeScript would be able to infer the type
+
+ Q/A What's the difference between JavaScript types 
+ (e.g. typeof 'Max' => 'string') and TypeScript types (e.g. const name: string = '...')?
+-JS has no compilation step but at runtime, you can check for certain types 
+(e.g. in if conditions). TS on the other hand allows you to catch certain errors during 
+development since it checks types during compilation as well.
+
+## Object types
+   define specific object types to tell ts
+
+  - tuple - This tells TypeScript, I want to have a special array with exactly two 
+  elements, because I have exactly two types in there, and the first element should 
+  be a number. The second element should be a string
+
+   - Union : If we have some place in our application, be that a parameter of a function or a constant or a variable,
+where using somewhere where we accept two different kinds of values, well, then a union type can help
+us to tell typescript that we are fine with either a number or a string.
+We use number and then the pipe.
+Symbol here and then the other type we always accept, and you can have more than two types, you can
+accept as many types here as you need.
+
+## fn return types & void
+ - no return type = void
+
+## function type and callbacks
+  - callback: callback functions can return something, even if the argument on 
+  which they're passed does NOT expect a returned value.
+  - function type: defines the parameters and return type of a function
+
+## unknown: different and better than any
+  - declaring a variable as unknown and assigning to any type suppose int and after string
+  will be accepted as any
+  - need extra type check...if type is string -> assign string
+  - better than any
+
+## never : case for a function doesn't returns anything, may be a error or have only while block
+thrown fn
+
+
+
+#### compiler and config
+----------------------------------------------------------------
+
+## watch mode single file: tsc filename -w (or --watch)
+## watch mode multiple file (as a project): 
+    tsc --init (init typescript project)
+    tsc or tsc --watch
+
+    --- creates a file tsconfig.json ---
+
+## exclude files to get ignored to compiled
+    "exclude": ["fileName","or pattern"]
+## include files to get ignored to compiled
+    "include": ["fileName","or pattern"] [" "**/*.tsx""]
+## target: which es method would need to compile, will be compiles as js andin perticular with that
+    "target": "es2016" / "es5"
+
+## lib: if the lib option is not set, some defaults some apis are assumed like DOM.
+    You need to have TypeScript run in the browser.
+    So all the DOM APIs and so on.
+
+    can't be array empty
+    "lib": ["dom","es6","DOM.Iterable","ScriptHost"]
+
+## allowJs/checkJs : allowJs/checkJs include JavaScript files in the compilation 
+    allowJs a JavaScript file will e compiled by TypeScript.
+
+## jsx: for react
+## declaration/declarationMap: .d.ts :  manifest for npm module
+## sourceMap: ** simplifies debugging
+    if true : act as bridge with some generated files(js.map) which understood by modern
+    browsers and developer tools there to connect js files to input files
+    - enables ts files with js files in source in developer tools, easy to debug and breakpoints
+
+## outDir/rootDir: organize the js files and js generated files
+   set dist folder to output js folder
+   outDir:'./dist
+   rootDir:"./src -- input files
+
+## removeComments: remove comments in compilation
+## noEmit : doesn't generate any js files, needs just to check the ts files for errors 
+## noEmitOnError: false: despite an error will generate js files/compiles
+                  true: problematic files will not generate
+
+## strict: enable or all other to individually enables
+## noImplicitAny:false : ignores the fn parameter
+## strictNullChecks: tell ts how to access and work with values that might potentially hold value/null
+
+  ! operator: yield a non null value
+  document.querySelector("button")!
+
+
+## strictBindCallApply: check if we correctly using bind with appropriate arguments and parameters
+## strictPropertyInitialization: working with classes
+## noImplicitThis : this keyword and types basically tries to warn you if you use the this keyword
+    in a place where it's not clear what it refers to 
+## alwaysStrict: controls that the JavaScript files which are generated are using
+    strict mode so that this is added.
+
+    -- code quality related --
+## noUnusedLocals:
+## noUnusedParameters: warnings for unused codes/parameters
+## noImplicitReturns : check if we returned something in a implicit functions
+
+
+
+## vscode debugger
+
+-- enable sourcemap in tsconfig
+- debugger for chrome extension
+- 
