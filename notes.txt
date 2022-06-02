@@ -139,3 +139,9 @@ thrown fn
 -- enable sourcemap in tsconfig
 - debugger for chrome extension
 - 
+
+
+
+## classes 
+
+    -- private : #employees - assigned as private property of methods
