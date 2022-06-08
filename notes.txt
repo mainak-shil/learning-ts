@@ -140,8 +140,22 @@ thrown fn
 - debugger for chrome extension
 - 
 
-
-
 ## classes 
 
     -- private : #employees - assigned as private property of methods
+    -- SHORT HAND INITIALIZATION IN CONSTRUCTOR
+
+        class Department2 {
+        // public name: string;
+        // #employees: string[] = [];
+
+        constructor(public name: string) {}
+        
+    -- readOnly : ===> const
+    class Department2 {
+        // public name: string;
+        // #employees: string[] = [];
+
+        constructor(private readonly id: string) {}
+
+    -- inheritance: single class inheritance
