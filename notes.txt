@@ -152,10 +152,17 @@ thrown fn
         constructor(public name: string) {}
         
     -- readOnly : ===> const
-    class Department2 {
-        // public name: string;
-        // #employees: string[] = [];
+        class Department2 {
+            // public name: string;
+            // #employees: string[] = [];
 
-        constructor(private readonly id: string) {}
+            constructor(private readonly id: string) {}
 
     -- inheritance: single class inheritance
+    
+    -- protected : can override inherited props and implementation
+
+    -- getter/setter :  need to access or store a private property
+
+            set report()
+            get report()
