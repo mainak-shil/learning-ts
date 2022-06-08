@@ -166,3 +166,9 @@ thrown fn
 
             set report()
             get report()
+
+    -- static methods/property : doesn't need to init
+        eg: Math.log
+        -- static and non-static fields with the same name can exists 
+        without any error. The static field will be accessed using dot 
+        notation and the non-static field can be accessed using an object.
