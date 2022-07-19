@@ -40,12 +40,12 @@ accounting2.printEmployeeInformation();
 
 class Department_Shorthand {
   constructor(public name: string) {
-    this.name = 'Mainak';
+    this.name = "Mainak";
   }
 }
 
 class Department_ReadOnly {
   constructor(public readonly name: string) {
-    this.name = 'Mainak';
+    this.name = "Mainak";
   }
 }

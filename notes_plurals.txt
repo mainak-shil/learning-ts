@@ -1,0 +1,152 @@
+
+install and create 1st js of typescript
+$ npx --package typescript tsc --outDir dist index.ts // longhand $ to run ts file
+$ npm init -y
+$ npm install typescript --save-dev
+
+tsc -> tsc in script
+// create ts config file
+$ npm run tsc -- --init // ES2017
+caniuse.com --> features transpiles
+// sourcemap -> true // debugg in browser
+// outmap -> dist
+// moduleresolution -> node
+
+
+// run application
+$ npm run tsc // shorthand $ to run ts file
+
+
+
+
+
+----- classes --------------------------------
+
+## constructor -> overloading doesn't support in typescript
+  eg: multiple constructor with different parameters
+
+  automate constructor with initalization
+  class ...
+    constructor(public name:string){
+      // this will set and init the value
+    }
+
+## static -> dont need to create instance like render member to load html
+    static viewTemp:HtmlElement
+
+    static render(){
+      class.ViewTemp = html
+    }
+
+    or private constructor
+
+
+----- Inheritance --------------------------------
+
+## Inheritance -> reuse code; bank account need to duplicate checkingBalance
+
+class BankAccount {
+
+  balance: float
+  bankName: string
+
+  constructor(){
+    set some values
+  }
+}
+
+class MemberAccount extends BankAccount{
+  constructor(defaultBankAccountValues){
+    super(defaultBankAccountValues)
+  }
+}
+
+## abstract -> hide functionality; tv
+        why? 
+
+  BankAccount [Abstract class]
+  |> Savings Account
+  |> Current Account
+
+            abstract class BankAccount {
+              // abstract class can be used as a foundation for other classes
+              // can define concrete members as well as abstract members
+
+              // abstract member (must be implemented by child)
+              abstract accountType: AccountType
+
+              // concrete member
+              deposit(){
+
+              }
+
+              abstruct getAccountInfo()
+            }
+
+            class SavingsAccount extends BankAccount{
+
+              getAccountInfo (){ // as implemented in child class
+                ...
+              }
+            }
+
+
+----- interfaces --------------------------------
+
+Interface act as a contract that defines set of rules
+
+eg: Suppose a company needs somes machines; bt machines are hard to learn
+    company owner sets a contract with machines manufactors
+    Rules: start and stop button
+    start -  green color; stop - stop color
+
+    transers happy; wokrs happy
+
+    converting to programming
+
+    each machine are classes; start nad stop method; api is predictible
+
+    So interface crrates some sures need to have some specifuc fules;
+    create consistancy
+
+    BankAccount
+      - deposits()
+      - withdrawal()
+                              ****> Interface 
+    ATM                       - deposits()                     
+      - deposits()            - withdrawal()
+      - withdrawal()
+
+
+Interface creates zero size in bundles
+0 calories - 0 fat
+
+
+## create interface - can be used to create custom types
+
+interface IDepositWithdrawal { // create contract; 2 rules
+  deposit(amount): void
+  withdrawal(amount): void
+}
+
+interface IAccountInfo { 
+  routingNumber: number
+  bankNumber: number
+}
+
+interface AccountSettings {
+  id;
+  title;
+  balances;
+  interestRate?:number // optional
+}
+
+
+class || interface  ***
+
+
+Object creation techniques *** | know right tool at right job
+- constructor fn
+- Object Literal
+- object.create()
+- Class

@@ -1,7 +1,7 @@
 #### intro
 ----------------------------------------------------------------
 eliminate manually compile tsc js filename
-$ npm init
+$ npm init -y
 $ npm i --save-dev lite-server // hot-reload
 
 ## Basic and type
@@ -117,7 +117,7 @@ thrown fn
 ## strictNullChecks: tell ts how to access and work with values that might potentially hold value/null
 
   ! operator: yield a non null value
-  document.querySelector("button")!
+  document.querySelector("button")!.someValueThatCanBeNull
 
 
 ## strictBindCallApply: check if we correctly using bind with appropriate arguments and parameters
@@ -141,6 +141,11 @@ thrown fn
 - 
 
 ## classes 
+    
+    access modifiers
+    : private for internal access, 
+    : protected for internal access, also in inheriting classes
+    : public for access from everywhere.
 
     -- private : #employees - assigned as private property of methods
     -- SHORT HAND INITIALIZATION IN CONSTRUCTOR
@@ -159,6 +164,7 @@ thrown fn
             constructor(private readonly id: string) {}
 
     -- inheritance: single class inheritance
+    : share functionality 
     
     -- protected : can override inherited props and implementation
 
@@ -172,3 +178,173 @@ thrown fn
         -- static and non-static fields with the same name can exists 
         without any error. The static field will be accessed using dot 
         notation and the non-static field can be accessed using an object.
+
+    -- abstract class/method (TODO): a class that cannot be instantiated but has to be
+        extended
+    -- singleton class (TODO): one instance with static value and method
+    -- prototype in vanila js (TODO)
+
+
+
+
+
+
+
+
+    ----------------------------------------------------------------
+
+==== types ===
+
+void - absence of a type
+null/undefined - default js  [allow by --strictNullChecks false]
+    value = null/undefined ; use union by strictNullChecks to true
+never - never occur/return - eg fn return exception
+any - opt out type, eg using a package
+
+--union types--
+let someValue : number | string  ---possible types
+
+
+=== type assertion ===
+
+let value: any = 5
+
+(<number>value).toFixed(4)
+
+=== type annotation to fn ===
+
+optional parameter : fn(msg?: string) or (msg = "something")
+
+--noImplicitAny : true  => check if any type and gives errors
+
+*** filter(element,index,array) ***
+
+
+
+=== enum ===
+
+const enum { } -> doesn't convert to js, provides only the value
+
+const enum ProductType { 
+    Sports, Team,
+}
+
+const pt = ProductType.Sports -> to js -> const pt = 2
+
+to generate -> only enum { }
+
+
+=== optional type and parameter ===
+
+type ProductType = { 
+    id: number;
+    name?: string;  /// ? is for optional
+}
+
+fn (name:string, icon?: string)
+
+=== func return types ===
+
+**** for async function:
+    async func getData () : Promise<ProductType[]> {
+        ...await fetch()
+    }
+
+
+=== classes and interfaces ===
+
+private title -> js runtime still accessible
+or
+
+#title -> not accessible depending on es version
+
+
+----- interface -----
+- use to mention class properties
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+class Player implements Person {
+    name: string;
+    age: number;
+}
+
+---- compiler ref ----
+
+/// <reference path="person.ts" />
+// manage dependencies without shiiping files; 
+// telling compiler file has reference to person interface file; 
+// works when compiling specific files
+
+Class Player implements Person {
+    ...
+}
+
+
+=== static keyword ===
+
+// access properties directly
+// uses: creating utils classes
+// values doesn't depends on instance of a class
+
+class WebDeveloper {
+
+    static jobDesc = "text"
+
+    getJobDesc(){
+        ClassName.jobDesc
+    }
+}
+
+WebDeveloper.getJobDesc()
+
+
+=== constructor ===
+
+super() // call parent class constructor from child; if a class is extends other class
+
+readonly  // prevent re-init after gets ini from constructor
+
+=== Modules ===
+
+1. export {a, b, c as something}
+
+import {a, b} from './somefile'  /// relative reference
+
+2. export default class Person
+
+import Person from ''
+
+3. import * as Name from '.'  /// access all
+
+---- Non relative ----
+
+import * lodash as from 'lodash'
+
+---- module resolution strategies ----
+
+module resolution strategies -- tsc --moduleResolution Classic | Node
+
+------ tsconfig traceResolution ----
+
+enables in tsconfig to debug module resolution issues
+
+
+---- type declaration files ----
+// install declation lib of same to get fetures to types and all other
+// find in js library
+// created by other developers from lib devs
+// find in tslang.org (official page) - tool page -> type search -> 
+lodash ... @types/lodash
+
+
+---- using libs ----
+
+lodash
+@types/lodash
+
+
+

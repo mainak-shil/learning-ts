@@ -1,0 +1,11 @@
+|| Creating Asynchronous TypeScript Code ||
+https://github.com/johnpapa/typescript-async
+
+|| Configuring, Compiling, and Debugging TypeScript 4 Projects By Daniel Stern ||
+
+-- install local
+npm i --save-dev types..@version
+-- create package json default
+npm init -y
+
+-- tsconfig

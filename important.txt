@@ -18,3 +18,20 @@ https://academind.com/tutorials/reference-vs-primitive-values
 es features compatibility: https://kangax.github.io/compat-table/es6/
 
 ---- Links ----
+
+
+
+Pruralsight/ typescript-fundamentals
+
+DanWahlin Dan Wahlin
+johnpapa John Papa
+
+github: https://github.com/DanWahlin/typescript-fundamentals
+
+
+Creating Object-oriented TypeScript Code
+https://github.com/DanWahlin/TypeScriptDemos
+(see the examples/object-oriented directory)
+
+
+take notes from OOps 8.18m

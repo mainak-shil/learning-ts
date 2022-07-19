@@ -1,0 +1,123 @@
+Creating and Using Generics in TypeScript 4
+By Brice Wilson
+https://github.com/bricewilson/Creating-and-Using-Generics-in-TypeScript
+
+
+----- generics --------------------------------
+
+- reusable code that works with multiple types
+- my be functions , interfaces/ classes
+- code that accepts type parameters for each instance or invocation
+
+- Generics are not just for classes
+- Type-safe versatility
+- Generic constraints increase practicality
+- Generic function types add flexibility
+
+cons : generics doesn't work with static
+
+------  with class ------ 
+
+eg: if we create a type bases class, of Books[], so we can only pass
+that type to create a class instance
+compiler can't assume a type of some property
+
+generics enables us to crete instance with different types
+
+:: prev: 
+
+import {Book} ...
+
+class BookShelf {
+
+  _books: Book[] = []
+
+  addBookToCatalog(newBook: Book){
+    // ..
+  }
+}
+
+:: with generics: 
+
+
+class BookShelf<T> { // T -> type
+
+  _books: T[] = []
+
+  addBookToCatalog(newBook: T){
+    // ..
+  }
+}
+
+BookShelf<Book> = new BookShelf<Book>();
+
+
+------ with array ------ 
+
+let junkArr: any[] = ['cool', 43, true]           -> accepts any values
+
+let typedArr: Array<string> = ['cool', 43, true]   -> does not accept except strings
+normal type
+typedArr: string[] = ['cool', 43, true] ====> better
+
+------ with fn ------
+
+function checkOut<T, V>(item: T, customer: V): T {
+
+  availableItem: T = getItemFromDB (item) ;
+  activeCustomer: V = = getCustomerFromDB (customer)
+
+  if (availableItem && activeCustomer) {
+
+  }
+  
+  return item;
+}
+
+checkOut<Book, Student> ( someBook, someStudent);
+
+------ type Constraints ------
+
+if using generics and using some properties of that type
+will need to have that item
+
+like the
+
+import {MeetingResource} ...
+import{ ConferenceRoom, conferenceRoomData}
+import { PartyTent, partyTentData
+import { Building, buildingData } 
+
+// T type in fn; which uses that type in params
+
+function getBigRooms<T extends MeetingResource>(rooms: Array<T>, minsize: number) : Array<T>
+  let bigRooms: Array<T> = [];
+
+  rooms.forEach (r => {
+    if (r.capacity > minsize) { // if we not extends capacity will have warning
+      bigRooms.push(r):
+    }
+  });
+  return bigRooms;
+}
+let bigRooms : Array<ConferenceRoom> = getBigRooms<ConferenceRoom>(ConferenceRoom, 20);
+or
+let bigRooms = getBigRooms(ConferenceRoom, 20); // type inference
+
+
+------ with interface ------
+
+export interface LibraryCollection< T>{
+  _items: T[]:
+  addItemToCatalog (newItem: T): void;
+  removeItemF romCatalog (oldItem: T): void;
+}
+
+let titleCollection: LibraryCollection<st ring
+  _items: ['Winnie the Pooh', "Curious George" ],
+  addItemToCatalog: s => console.log( "Added item ${s}"),
+  removeItemF romCatalog: s => console.log("Removed item S{s})
+}
+
+
+STACK example in repo ***

@@ -1,0 +1,44 @@
+pluralsight
+Creating and Using TypeScript 3 Decorators
+By David Tucker
+
+Decorators
+- cross cutting data rules
+
+...... Globomantics
+
+"Decorators provide a way to add both
+annotations and a meta-programming syntax
+for class declarations and members.
+decoratorS are available as an experimental
+feature of TypeScript."
+
+
+TypeScript Decorator Example
+
+@controller ("/api")
+class APIServer {
+
+  @log("Route added to API Server ")
+  publ1c addRoute(path:string, action: Action ) {
+  this.app.addRoute (path, action) ;
+
+  }
+}
+
+---- cross-cutting concerns ----
+
+---- decorators & annotations ----
+
+TypeScript decorators are different from annotation from other programming languages
+
+Annotations are limited to setting metadata
+Decorators are fn that can modify what they describe when executed
+
+---- types decorators ----
+class | method | property | parameter
+
+
+tsconfig
+experimentalDecorator true
+emitDecoratorMetadata true
